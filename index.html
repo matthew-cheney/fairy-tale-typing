@@ -16,7 +16,11 @@
 
 <body ng-controller="moviesCtrl">
     <div id="everything">
-        <br>
+        <div id="top">
+            <div id="title">Fairy Tale Typing</div><br>
+            <span>Difficulty (words per minute): </span><input id="difficultyField" type="text" ng-model="difficulty" ng-keyup="setDifficulty()" placeholder="1 - 100"> <input type="button" value="Reset" ng-click="refresh()">
+            <hr>
+        </div>
         <div id="left">
             <ul>
                 <li><input type="button" value="Connla and the Fairy Maiden" ng-click="loadStory1()"></li>
@@ -26,11 +30,7 @@
             </ul>
         </div>
         <div id="center">
-            <div id="title">Fairy Tale Typing</div><br>
-            <hr>
             <div id="player"><iframe class="video" id="myVideo" width="560" height="315" src="https://www.youtube.com/embed/M6v1oD_pF-k?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe></div>
-            <hr>
-
         </div>
         <div id="right">
             <ul>
@@ -40,14 +40,17 @@
                 <li><input type="button" value="Farewell to Ireland/Foxhunter's Reel" ng-click="loadVideo4()"></li>
             </ul>
         </div>
+        <div id="minibottom">
+            <hr>
+        </div>
         <div id="bottom">
             <div id="progressbarDiv"><img src="progressbar.png"></div>
             <div id="prompt">
                 <p>{{typing_prompt}}</p>
             </div>
             <textarea id="inputArea" ng-model="typingArea" ng-keyup="typeCheck()" ng-style="inputStyle" rows="4" placeholder="begin typing after video loads">
-
         </div>
+
     </div>
 </body>
 

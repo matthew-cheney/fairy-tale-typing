@@ -19,10 +19,14 @@ body {
     text-align: center;
 }
 
+#difficultyField {
+    width: 30px;
+}
+
 ul {
     list-style: none;
     position: relative;
-    top: 60px;
+    top: 00px;
 }
 
 li {
@@ -36,7 +40,9 @@ li {
 div {
     position: relative;
 }
-
+#top {
+    width: 1400px;
+}
 #left {
     float: left;
     width: 400px;
@@ -50,6 +56,13 @@ div {
 #right {
     float: left;
     width: 400px;
+}
+
+#minibottom {
+    float: left;
+    width: 1400px;
+    height: 5px;
+    padding-bottom: 20px;
 }
 
 #bottom {
@@ -73,9 +86,10 @@ textarea {
     font-family: arial;
     text-align: left;
     border-radius: 10px;
-    background-color: rgba(0,0,0,.05);
+    background-color: rgba(255,255,255,0.5);
 }
 
 #prompt p {
     padding: 5px;
+    
 }
