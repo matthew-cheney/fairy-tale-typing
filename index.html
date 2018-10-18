@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="moviesApp">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="dist/assets/js/angular-timer-all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-timer/1.3.5/angular-timer.min.js"></script>
+
+
+    <script src="javascript.js"></script>
+
+
+</head>
+
+<body ng-controller="moviesCtrl">
+    <div id="everything">
+        <br>
+        <div id="left">
+            <ul>
+                <li><input type="button" value="Connla and the Fairy Maiden" ng-click="loadStory1()"></li>
+                <li><input type="button" value="Hudden and Dudden and Donald O'Neary" ng-click="loadStory2()"></li>
+                <li><input type="button" value="The Sprightly Tailor" ng-click="loadStory3()"></li>
+                <li><input type="button" value="Gold-Tree and Silver-Tree" ng-click="loadStory4()"></li>
+            </ul>
+        </div>
+        <div id="center">
+            <div id="title">Fairy Tale Typing</div><br>
+            <hr>
+            <div id="player"><iframe class="video" id="myVideo" width="560" height="315" src="https://www.youtube.com/embed/M6v1oD_pF-k?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe></div>
+            <hr>
+
+        </div>
+        <div id="right">
+            <ul>
+                <li><input type="button" value="The Haughs of Cromdale" ng-click="loadVideo1()"></li>
+                <li><input type="button" value="Erin (Wolfstone)" ng-click="loadVideo2()"></li>
+                <li><input type="button" value="Corryvreckan (William Jackson)" ng-click="loadVideo3()"></li>
+                <li><input type="button" value="Farewell to Ireland/Foxhunter's Reel" ng-click="loadVideo4()"></li>
+            </ul>
+        </div>
+        <div id="bottom">
+            <div id="progressbarDiv"><img src="progressbar.png"></div>
+            <div id="prompt">
+                <p>{{typing_prompt}}</p>
+            </div>
+            <textarea id="inputArea" ng-model="typingArea" ng-keyup="typeCheck()" ng-style="inputStyle" rows="4" placeholder="begin typing after video loads">
+
+        </div>
+    </div>
+</body>
+
+</html>

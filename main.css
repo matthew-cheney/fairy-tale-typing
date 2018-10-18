@@ -1,0 +1,81 @@
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, .05);
+    background-image: url("mistybackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: hidden;
+}
+
+#player {
+    pointer-events: none;
+}
+
+#everything {
+    width: 1400px;
+    height: 100vh;
+    margin: auto;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    position: relative;
+    top: 60px;
+}
+
+li {
+    padding-bottom: 15px;
+}
+
+#title {
+    font-size: 50px;
+}
+
+div {
+    position: relative;
+}
+
+#left {
+    float: left;
+    width: 400px;
+}
+
+#center {
+    float: left;
+    width: 600px;
+}
+
+#right {
+    float: left;
+    width: 400px;
+}
+
+#bottom {
+    width: 800px;
+    display: inline-block;
+    margin: auto;
+}
+
+#progressbarDiv {
+    overflow: hidden;
+}
+
+textarea {
+    font-size: 20px;
+    font-family: arial;
+    width: 100%;
+}
+
+#prompt {
+    font-size: 20px;
+    font-family: arial;
+    text-align: left;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,.05);
+}
+
+#prompt p {
+    padding: 5px;
+}
