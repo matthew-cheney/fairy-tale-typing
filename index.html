@@ -15,10 +15,17 @@
 </head>
 
 <body ng-controller="moviesCtrl">
+    <div id="welcomePage" onclick="hideOverlay()">
+        <div id="instructionDiv">
+            <span>Welcome to</span><br><br>
+            <span id="welcomeTitle">Fairy Tale Typing</span><br><br>
+            <span><b>Instructions:</b> Fairy Tale Typing is designed to improve typing proficiency. It is aimed at typers of intermediate-advanced levels (sample texts utilize all keys, and include several uncommon words).<br><br>To begin, simple begin typing in the box below the typing prompt. The prompt will change automatically after each sentence. There is no need to press Enter.<br><br>The progress bar indicates remaining time to complete each sentence. If time runs out, the video will pause. It will resume automatically when the current sentence is complete.</span><br><br><br><em>click anywhere to continue</em>
+        </div>
+    </div>
     <div id="everything">
         <div id="top">
             <div id="title">Fairy Tale Typing</div><br>
-            <span>Difficulty (words per minute): </span><input id="difficultyField" type="text" ng-model="difficulty" ng-keyup="setDifficulty()" placeholder="1 - 100"> <input type="button" value="Reset" ng-click="refresh()">
+            <span>Difficulty (1 - 100): </span><input id="difficultyField" type="text" ng-model="difficulty" ng-keyup="setDifficulty()" placeholder="1 - 100"> <input type="button" value="Reset" ng-click="refresh()">
             <hr>
         </div>
         <div id="left">
@@ -30,7 +37,7 @@
             </ul>
         </div>
         <div id="center">
-            <div id="player"><iframe class="video" id="myVideo" width="560" height="315" src="https://www.youtube.com/embed/M6v1oD_pF-k?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe></div>
+            <div id="player"><iframe class="video" id="myVideo" width="560" height="315" src="https://www.youtube.com/embed/M6v1oD_pF-k?enablejsapi=1&version=3&playerapiid=ytplayer&playlist=M6v1oD_pF-k&loop=4" frameborder="0" allowfullscreen></iframe></div>
         </div>
         <div id="right">
             <ul>
@@ -46,11 +53,12 @@
         <div id="bottom">
             <div id="progressbarDiv"><img src="progressbar.png"></div>
             <div id="prompt">
-                <p>{{typing_prompt}}</p>
+                <div id="paddingForPrompt">
+                    <p>{{typing_prompt}}</p>
+                </div>
             </div>
             <textarea id="inputArea" ng-model="typingArea" ng-keyup="typeCheck()" ng-style="inputStyle" rows="4" placeholder="begin typing after video loads">
         </div>
-
     </div>
 </body>
 

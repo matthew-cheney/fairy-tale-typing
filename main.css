@@ -5,7 +5,34 @@ body {
     background-image: url("mistybackground.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    overflow-y: hidden;
+}
+
+#welcomePage {
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 99 !important;
+    cursor: pointer;
+    text-align: center;
+}
+
+#instructionDiv {
+    color: white;
+    font-family: arial;
+    font-size: 25px;
+    width: 700px;
+    display: inline-block;
+    line-height: 40px;
+}
+
+#welcomeTitle {
+    font-size: 80px;
 }
 
 #player {
@@ -40,9 +67,11 @@ li {
 div {
     position: relative;
 }
+
 #top {
     width: 1400px;
 }
+
 #left {
     float: left;
     width: 400px;
@@ -86,10 +115,10 @@ textarea {
     font-family: arial;
     text-align: left;
     border-radius: 10px;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-#prompt p {
+#paddingForPrompt {
     padding: 5px;
-    
+
 }

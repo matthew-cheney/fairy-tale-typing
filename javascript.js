@@ -41,8 +41,13 @@
   }
 */
 
+function hideOverlay() {
+  document.getElementById("welcomePage").style.display = "none";
+}
+
 var moviesApp = angular.module('moviesApp', []);
 moviesApp.controller('moviesCtrl', function($scope, $timeout, $http) {
+
 
 
 
@@ -58,7 +63,7 @@ moviesApp.controller('moviesCtrl', function($scope, $timeout, $http) {
   var url = "https://www.youtube.com/embed/M6v1oD_pF-k?enablejsapi=1&version=3&playerapiid=ytplayer";
 
   $scope.loadVideo1 = function() {
-    url = "https://www.youtube.com/embed/" + "M6v1oD_pF-k" + "?enablejsapi=1&version=3&playerapiid=ytplayer";
+    url = "https://www.youtube.com/embed/" + "M6v1oD_pF-k" + "?enablejsapi=1&version=3&playerapiid=ytplayer&playlist=M6v1oD_pF-k&loop=4";
     $("#myVideo").attr('src', url);
     $scope.pauseVideo();
     $scope.resetTimer();
@@ -66,21 +71,21 @@ moviesApp.controller('moviesCtrl', function($scope, $timeout, $http) {
   }
 
   $scope.loadVideo2 = function() {
-    url = "https://www.youtube.com/embed/" + "2OM7Ubqee3U" + "?enablejsapi=1&version=3&playerapiid=ytplayer";
+    url = "https://www.youtube.com/embed/" + "2OM7Ubqee3U" + "?enablejsapi=1&version=3&playerapiid=ytplayer&playlist=M6v1oD_pF-k&loop=4";
     $("#myVideo").attr('src', url);
     $scope.pauseVideo();
     $scope.resetTimer();
     console.log(url);
   }
   $scope.loadVideo3 = function() {
-    url = "https://www.youtube.com/embed/" + "rU2fglQ_Gl8" + "?enablejsapi=1&version=3&playerapiid=ytplayer";
+    url = "https://www.youtube.com/embed/" + "rU2fglQ_Gl8" + "?enablejsapi=1&version=3&playerapiid=ytplayer&playlist=M6v1oD_pF-k&loop=4";
     $("#myVideo").attr('src', url);
     $scope.pauseVideo();
     $scope.resetTimer();
     console.log(url);
   }
   $scope.loadVideo4 = function() {
-    url = "https://www.youtube.com/embed/" + "frjRU_spyj4" + "?enablejsapi=1&version=3&playerapiid=ytplayer";
+    url = "https://www.youtube.com/embed/" + "frjRU_spyj4" + "?enablejsapi=1&version=3&playerapiid=ytplayer&playlist=M6v1oD_pF-k&loop=4";
     $("#myVideo").attr('src', url);
     $scope.pauseVideo();
     $scope.resetTimer();
@@ -181,12 +186,12 @@ moviesApp.controller('moviesCtrl', function($scope, $timeout, $http) {
   }
   $scope.typeCheck = function() {
     if (firstStart == true) {
-      $scope.startTimer();
+      $scope.startTimer(true);
       firstStart = false;
     }
     if ($scope.textArray[$scope.displaySentence].startsWith($scope.typingArea)) {
       $scope.inputStyle = { "background-color": "white" };
-      console.log("That's correct");
+      //console.log("That's correct");
     }
     else {
       $scope.inputStyle = { "background-color": "#F98484" };
@@ -200,7 +205,7 @@ moviesApp.controller('moviesCtrl', function($scope, $timeout, $http) {
         $scope.addTime();
       }
       else {
-        $scope.startTimer();
+        $scope.startTimer(false);
       }
       //Display next sentence to type
       $scope.displaySentence++;
@@ -209,22 +214,28 @@ moviesApp.controller('moviesCtrl', function($scope, $timeout, $http) {
       console.log($scope.textArray[$scope.displaySentence]);
     }
   };
-  $scope.startTimer = function() {
+  $scope.startTimer = function(initialStart) {
     console.log("starting timer");
     $scope.playVideo();
     $("#inputArea").attr('placeholder', "");
-    if (firstStartWPM == true) {
-      toAdd = Math.trunc(secondsPerWord * ($scope.textArray[$scope.displaySentence].split(" ").length));
+    if (initialStart == true) {
+      toAdd = Math.trunc(60 / $scope.difficulty * ($scope.textArray[$scope.displaySentence].split(" ").length));
       if (toAdd < 5) {
-        toAdd = 5;
+        toAdd += 3;
       }
       $scope.timerCount = toAdd;
+      console.log(toAdd);
       firstStartWPM = false;
     }
     else {
-      $scope.timerCount = Math.trunc(secondsPerWord * ($scope.textArray[$scope.displaySentence + 1].split(" ").length));
-    }
-
+        toAdd = Math.trunc(60 / $scope.difficulty * ($scope.textArray[$scope.displaySentence + 1].split(" ").length));
+        if (toAdd < 5) {
+          toAdd += 3;
+        }
+        $scope.timerCount = toAdd;
+        console.log(toAdd);
+        firstStartWPM = false;
+      }
     var countDown = function() {
       if ($scope.timerCount < 0 && complete == false) {
         $scope.pauseVideo();
@@ -247,11 +258,12 @@ moviesApp.controller('moviesCtrl', function($scope, $timeout, $http) {
     countDown();
   }
   $scope.addTime = function() {
-    toAdd = Math.trunc(secondsPerWord * ($scope.textArray[$scope.displaySentence + 1].split(" ").length));
+    toAdd = Math.trunc(60 / $scope.difficulty * ($scope.textArray[$scope.displaySentence + 1].split(" ").length));
     if (toAdd < 5) {
-      toAdd = 5;
+      toAdd += 3;
     }
     $scope.timerCount = toAdd;
+    console.log(toAdd);
   }
   $scope.endTimer = function() {
     complete = true;
